@@ -1,0 +1,107 @@
+	 body {
+	   background-color: black;
+	   color: white;
+	   
+	 }
+   
+		* {
+			font-family: Courrier, monospace;
+		}
+		code { 
+			font-family: monospace;
+			border: solid 10px;
+		}
+		#logo {
+			 background: rgb(28,30,135);
+     background: linear-gradient(90deg, rgba(0,50,190,1) 0%, rgba(0,0,0,1) 21%);
+			 color: black;
+			 padding: 8px;
+			 margin: 0px;
+			 background-clip: text;
+			 border-bottom: outset 3px #323F89;
+    }
+   .ver_num{
+     font-size: 50%;
+     text-decoration: underline;
+     margin: 0px;
+     padding: 0px;
+     color: #31FF6C;
+
+  }
+    a, a:visited{
+    color: white;
+    border: none;
+			font-weight: bold;
+			text-decoration: underline;
+    }
+    
+  small, .uid{
+  margin-top: 4px;
+  padding-top: 8px;
+  }
+
+		.error {
+			color: red;
+			font-weight: bold;
+		}
+  .detail_list{
+    margin: 2px 2px;
+    margin-bottom: 8px;
+    border-left: inset 4px white;
+    border-bottom: inset 4px white;
+    list-style-type: square;
+  }
+  
+  h3{
+    margin: 0px 0px;
+    padding: 0px 0px;
+    background-clip: text;
+  }
+  del, .finished{
+  color: grey;
+		text-decoration: line-through;
+	}
+	li.High::before{
+	content: "↑ ";
+	color: lime;
+	}
+	li.Low::before{
+	content: "↓ ";
+	color: orange;
+	}
+  .started{
+    color: cyan;
+  }
+ .selected{
+    color: #3AFDFF;
+    font-size: 135%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  .notify{
+    color: lime;
+    border: double 2px lime;
+  }
+  .state_started{
+    color: lime;
+  }
+  .state_finished{
+    color: #464646;
+    text-decoration: line-through;
+    
+  }
+  .sub_count{
+    margin-left: 4px;
+    
+ }
+  .sub_list{
+    margin-left: 24px;
+    list-style-type: "->";
+  
+  }
+  em{
+      background-color: black;
+      margin-left: 10px;
+      margin-top: 0px;
+      padding-top: 0px;
+  }
