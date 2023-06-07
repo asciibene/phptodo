@@ -1,63 +1,15 @@
 <?php
 // GLOBALS  Func defs
-
+include_once("class.php");
 define("DBLOC","./db/todo.db");
 define("VER","v0.17");
 
 // Globals END
-// ─────────────────── class defs
 
-class TodoObject{
-
-  public $title;
-  public $priority;
-  public $timestamp;
-  public $state;
-  public $uid;
-  public $desc;
-  public $sub;
-
-  public function __construct($ttl,$pri = "Normal",$desc = null)
-  {
-    $this->uid = uniqid(); //no use curr. (v.12)
-    $this->timestamp=date_create('now');
-    $this->title = $ttl;
-    $this->state = "No State";
-    $this->priority = $pri;
-    $this->desc = $desc;
-    $this->sub = []; //sub array 
-  }
-  
-  public function __toString()
-  {
-    return $this->title;
-  }
-  
-  public function __callable()
-  {
-    return $this->uid;
-  }
-  
-  public function get_subs(){
-  #Returns the sub array
-    return $this->sub;
-  }
-
-	public function get_details_array(){
-		# Returns an array w/ obj's details as strings
-		$proparray=[];
-		foreach($this as $pname=>$pval):
-      $proparray[$pname]=$pval;
-		endforeach;
-		return $proparray;
-  }
- 	
-}
 //  ----------- Helper Funcs -------------
 
 function notify($ns){
   echo '<small class="notify">'.$ns.'</small>';
-  
 }
 
 function mktag($tag,$content,$atlist = null){
@@ -151,10 +103,10 @@ function db_sort_by_priority(){
     endif;
   endforeach;
   foreach($db as $k=>$obj):
-	   	if($obj->priority=="Normal" and $obj->state!='Finished'):
+    if($obj->priority=="Normal" and $obj->state!='Finished'):
 			     $newdb[]=$obj;
 			     unset($db[$k]);
-			 endif;
+	endif;
   endforeach;
   foreach($db as $k=>$obj):
 		  if($obj->priority=="Low" or $obj->state=='Finished')
@@ -254,16 +206,16 @@ function indoc_delete_sub($taskid,$subid){
 initdb();
 //Check page action
 if($_GET['reset']=='yes'){ resetdb(); }
-	if($_GET['act']=="select_reset"){ unset($_GET['id']);	}
-	if($_GET['act']=="new_task" and isset($_POST['new_title'])):
+if($_GET['act']=="select_reset"){ unset($_GET['id']);	}
+if($_GET['act']=="new_task" and isset($_POST['new_title'])):
     indoc_new_todo($_POST["new_title"]);
-  elseif($_POST["act"]=="upd_task" and isset($_GET['id']) and !empty($_POST)):
+elseif($_POST["act"]=="upd_task" and isset($_GET['id']) and !empty($_POST)):
     indoc_update_task($_GET['id']);
-  elseif($_POST['act']=="new_sub" and isset($_GET['id']) and !empty($_POST["new_sub_title"])):
+elseif($_POST['act']=="new_sub" and isset($_GET['id']) and !empty($_POST["new_sub_title"])):
     indoc_new_sub();    
-	elseif($_POST['act']=="delete_task" and isset($_GET['id'])):
+elseif($_POST['act']=="delete_task" and isset($_GET['id'])):
     indoc_delete_task($_GET['id']);
-	elseif($_GET['act']=="del_sub" and isset($_GET['id']) and isset($_POST['del_sub_id'])):
-		  indoc_delete_sub($_GET['id'],$_POST['del_sub_id']);
- endif;
+elseif($_GET['act']=="del_sub" and isset($_GET['id']) and isset($_POST['del_sub_id'])):
+	indoc_delete_sub($_GET['id'],$_POST['del_sub_id']);
+endif;
 
