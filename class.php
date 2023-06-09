@@ -37,7 +37,7 @@ class TodoObject{
     return $this->sub;
   }
 
-	public function get_details_array(){
+		public function get_details_array(){
 		# Returns an array w/ obj's details as strings
 		$proparray=[];
 		foreach($this as $pname=>$pval):

@@ -1,16 +1,12 @@
 <html>
 <head>
 <title>phpTodo</title>
-<link rel="stylesheet" type="text/css" href="style.css"> 
+<link rel="stylesheet" type="text/css" href="./style.css"/> 
 </head>
 <body>
 <?php
-// Here the ifs for stuff not requiring forms....
-// ie the action triggered BY the forms...
-//(Now is all included inside the include 
 include_once "func.php";
 include_once "class.php";    
-# page starts below
 ?>
 
 

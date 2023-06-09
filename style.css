@@ -12,14 +12,14 @@
 		}
 		#logo {
 			 background: rgb(28,30,135);
-     background: linear-gradient(90deg, rgba(0,50,190,1) 0%, rgba(0,0,0,1) 21%);
+       background: linear-gradient(90deg, rgba(0,50,190,1) 30%, rgba(0,0,0,1) 50%);
 			 color: black;
 			 padding: 8px;
 			 margin: 0px;
 			 background-clip: text;
 			 border-bottom: outset 3px #323F89;
     }
-   .ver_num{
+    .ver_num{
      font-size: 50%;
      text-decoration: underline;
      margin: 0px;
