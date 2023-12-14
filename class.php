@@ -1,6 +1,5 @@
 <?php
-// ─────────────────── class defs
-
+// ─────────────────── class defs ----------------------------------
 class TodoObject{
 
   public $title;
@@ -13,7 +12,7 @@ class TodoObject{
 
   public function __construct($ttl,$pri = "Normal",$desc = null)
   {
-    $this->uid = uniqid(); //no use curr. (v.12)
+    $this->uid = uniqid(); //no use curr. (v.12) but not for long hahahahahahah
     $this->timestamp=date_create('now');
     $this->title = $ttl;
     $this->state = "No State";
@@ -38,10 +37,10 @@ class TodoObject{
   }
 
 		public function get_details_array(){
-		# Returns an array w/ obj's details as strings
+		# Returns an array w/ obj's details as strings (convenient)
 		$proparray=[];
 		foreach($this as $pname=>$pval):
-      $proparray[$pname]=$pval;
+        $proparray[$pname]=$pval;
 		endforeach;
 		return $proparray;
   }

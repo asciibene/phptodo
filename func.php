@@ -64,7 +64,7 @@ function savedb(){
    file_put_contents(DBLOC,serialize($db));
   return true;          
 }
-
+// --------------- End  of helper funcs -------------------------------------
 // -------------- Indocument functions ────────────────────
 
 function indoc_display_items(){
@@ -115,6 +115,33 @@ function db_sort_by_priority(){
   endforeach;
   $db = $newdb;
   savedb();
+}
+
+function indoc_display_edit_forms($){
+$form_string= <<<FSTR
+	<h2>edit todo</h2>
+	<form action="index.php?id='.#{$_GET['id']}.'" method="post">
+
+	<label for="new_priority">Priority</label>
+	<select name="new_priority">
+	<option>High</option>
+	<option>Normal</option>
+	<option>Low</option>
+	</select><br>
+
+	<label for="new_state">State</label>
+	<select name="new_state">
+	<option>No state</option>
+	<option>Started</option>
+	<option>Finished</option>
+	</select><br>
+
+	<label for="new_desc">Description</label><br>
+	<textarea name="new_desc"> #{$db[$_GET['id']]->desc} </textarea><br>
+	<button name="act" value="upd_task">submit</button>
+	</form>
+FSTR;
+	
 }
 
 
@@ -206,7 +233,7 @@ function indoc_delete_sub($taskid,$subid){
 // ───────────── MAIN STUFF ────────────-------------------------------------------------------------
 
 initdb();
-//Check page action
+//Check page action --> put into separate file eventually
 if($_GET['reset']=='yes'){ resetdb(); }
 if($_GET['act']=="select_reset"){ unset($_GET['id']); }
 if($_GET['act']=="new_task" and isset($_POST['new_title'])):
