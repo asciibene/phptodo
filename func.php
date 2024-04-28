@@ -8,9 +8,9 @@ define("VER","v0.17");
 // Constants END
 
 //  ----------- Helper Funcs ------------- (eventually move to another file)
-function notify($ns){
-  echo '<small class="notify">'.$ns.'</small>';
-  return null;
+function notify($nstr){
+  echo $fullstr='<small class="notify">'.$nstr.'</small>';
+  return $fullstr;
 }
 
 function mktag($tag,$content,$atlist = null){
@@ -69,7 +69,7 @@ function savedb(){
 
 function indoc_display_items(){
   global $db;
-   db_sort_by_priority();
+  db_sort_by_priority();
   echo '<ul class="todo_list">';
   foreach($db as $k=>$obj):
     if(isset($_GET['id']) and $_GET["id"]==$k):
@@ -117,7 +117,7 @@ function db_sort_by_priority(){
   savedb();
 }
 
-function indoc_display_edit_forms($){
+function indoc_display_edit_forms(){
 $form_string= <<<FSTR
 	<h2>edit todo</h2>
 	<form action="index.php?id='.#{$_GET['id']}.'" method="post">
@@ -180,7 +180,9 @@ function indoc_view_details($taskid){
           echo('<ul class="sub_list"><form action="index.php?id='.$taskid.'&act=del_sub" method="post">');
          foreach($tobj->sub as $k=>$s):
           print('<li>'.$s['title']);
-          print('<button name="del_sub_id" value="'.$k.'">x</button>'); 
+          print('<button name="del_su
+        
+        b_id" value="'.$k.'">x</button>'); 
           print('</li>');
         endforeach; 
         echo '</ul></form>';
